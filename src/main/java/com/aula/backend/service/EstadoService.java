@@ -33,7 +33,7 @@ public class EstadoService {
         
     }
 
-    public Estado alterar(Estado estado){
+    public Estado atualizar(Estado estado){
         estado.setDataAtualizacao(new Date());
         return estadoRepository.saveAndFlush(estado);
 

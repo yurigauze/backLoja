@@ -13,39 +13,42 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.aula.backend.entity.Marca;
 import com.aula.backend.entity.Produto;
-import com.aula.backend.service.ProdutoService;
+import com.aula.backend.service.MarcaService;
 
-import jakarta.websocket.server.PathParam;
+
 
 @RestController
-@RequestMapping("/produtos")
 @CrossOrigin
-public class ProdutoController {
+@RequestMapping("/marca")
+public class MarcaController {
 
     @Autowired
-    private ProdutoService produtoService;
+    private MarcaService marcaService;
 
     @GetMapping
-    public Page<Produto> listarTodos(Pageable pageable) {
-        return produtoService.listarTodos(pageable);
+    public Page<Marca> listarTodos(Pageable pageable) {
+        
+        return marcaService.listarTodos(pageable);
     }
 
     @PostMapping
-    public Produto salvar(@RequestBody Produto produto) {
-        return produtoService.salvar(produto);
+    public Marca inserir(@RequestBody Marca marca) {
+        return marcaService.inserir(marca);
+
     }
 
     @PutMapping
-    public Produto atualizar(@RequestBody Produto produto) {
-        return produtoService.atualizar(produto);
+    public Marca alterar(@RequestBody Marca marca) {
+        return marcaService.alterar(marca);
+
     }
 
     @DeleteMapping("/{id}")
     public void excluir(@PathVariable("id") Long id) {
-        produtoService.excluir(id);
+        marcaService.excluir(id);
     }
 }

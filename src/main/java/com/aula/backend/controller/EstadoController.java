@@ -38,8 +38,8 @@ public class EstadoController {
     }
 
     @PutMapping
-    public Estado alterar(@RequestBody Estado estado) {
-        return estadoService.alterar(estado);
+    public Estado atualizar(@RequestBody Estado estado) {
+        return estadoService.atualizar(estado);
 
     }
 
