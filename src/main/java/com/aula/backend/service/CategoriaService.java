@@ -4,6 +4,8 @@ import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.aula.backend.entity.Categoria;
@@ -16,8 +18,8 @@ public class CategoriaService {
     @Autowired
     private CategoriaRepository categoriaRepository;
 
-    public List<Categoria> buscarTodos() {
-        return categoriaRepository.findAll();
+    public Page<Categoria> buscarTodos(Pageable pageable) {
+        return categoriaRepository.findAll(pageable);
     }
 
     public Categoria inserir(Categoria categoria) {
