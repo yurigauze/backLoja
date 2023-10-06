@@ -6,16 +6,15 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
 import lombok.Data;
 
 @Entity
-@Table(name = "estado")
+@Table(name = "pais")
 @Data
-public class Estado {
+public class Pais {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -23,9 +22,6 @@ public class Estado {
 
     private String nome;
     private String sigla;
-    
-    @OneToOne
-    private Pais pais;
     private boolean status;
     @Temporal(TemporalType.TIMESTAMP)
     private Date dataCriacao;
