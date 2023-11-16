@@ -14,20 +14,19 @@ import jakarta.persistence.TemporalType;
 import lombok.Data;
 
 @Entity
-@Table(name = "estado")
+@Table(name = "cidade")
 @Data
-public class Estado {
+public class Cidade {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     private String nome;
-    private String sigla;
     
     @OneToOne
-    @JoinColumn(name = "pais_id")
-    private Pais pais;
+    @JoinColumn(name = "estado_id")
+    private Estado estado;
 
     private boolean status;
     @Temporal(TemporalType.TIMESTAMP)

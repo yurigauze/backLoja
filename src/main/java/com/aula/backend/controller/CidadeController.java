@@ -1,8 +1,5 @@
 package com.aula.backend.controller;
-
-import java.util.List;
 import java.util.NoSuchElementException;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -17,48 +14,48 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import com.aula.backend.entity.Estado;
-import com.aula.backend.service.EstadoService;
+import com.aula.backend.entity.Cidade;
+import com.aula.backend.service.CidadeService;
 
 @RestController
-@RequestMapping("/estado")
+@RequestMapping("/cidades")
 @CrossOrigin
-public class EstadoController {
+public class CidadeController {
 
     @Autowired
-    private EstadoService estadoService;
+    private CidadeService cidadeService;
     
     @GetMapping
-    public Page<Estado> buscarTodos(Pageable pageable) {
-        return estadoService.buscarTodos(pageable);
+    public Page<Cidade> buscarTodos(Pageable pageable) {
+        return cidadeService.buscarTodos(pageable);
     }
 
     @PostMapping
-    public Estado inserir(@RequestBody Estado estado) {
-        System.out.println("Dados recebidos no backend: " + estado);
-        return estadoService.inserir(estado);
+    public Cidade inserir(@RequestBody Cidade cidade) {
+        System.out.println("Dados recebidos no backend: " + cidade);
+        return cidadeService.inserir(cidade);
 
     }
 
     @PutMapping
-    public Estado atualizar(@RequestBody Estado estado) {
-        return estadoService.atualizar(estado);
+    public Cidade atualizar(@RequestBody Cidade cidade) {
+        return cidadeService.atualizar(cidade);
 
     }
 
     @DeleteMapping("{id}")
-    public ResponseEntity<Object> excluirEstado(@PathVariable Long id) {
+    public ResponseEntity<Object> excluirCidade(@PathVariable Long id) {
         try {
-            estadoService.excluir(id);
-            return ResponseEntity.ok("Estado excluído com sucesso");
+            cidadeService.excluir(id);
+            return ResponseEntity.ok("Cidade excluído com sucesso");
         } catch (NoSuchElementException e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
         }
     }
 
     @GetMapping("/get/{id}")
-    public ResponseEntity<Estado> buscarPorId(@PathVariable("id") Long id) {
-        return ResponseEntity.ok(estadoService.buscarPorId(id));
+    public ResponseEntity<Cidade> buscarPorId(@PathVariable("id") Long id) {
+        return ResponseEntity.ok(cidadeService.buscarPorId(id));
     }
 
 }
